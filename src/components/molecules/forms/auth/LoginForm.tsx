@@ -2,7 +2,6 @@ import { Typography, TextField, FormHelperText, Button } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authApi from 'src/apis/auth';
-import { ERROR_CODE } from 'src/constants/datas';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const LoginForm = () => {
     });
     if (result === 'SUCCESS_LOGIN') return navigate('/', { replace: true });
     setError(true);
-    setErrorHelperText(ERROR_CODE[result]);
+    setErrorHelperText(result);
   };
   return (
     <>

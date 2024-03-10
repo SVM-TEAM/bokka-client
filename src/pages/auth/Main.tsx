@@ -1,19 +1,10 @@
-import {
-  Button,
-  Container,
-  CssBaseline,
-  Box,
-  Divider,
-  Stack,
-} from '@mui/material';
+import { Button, Box, Divider, Stack, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SocialLoginButtons, {
   SocialLoginButtonProps,
 } from 'src/components/atoms/buttons/SocialLoginButton';
 import GoogleIcon from '@mui/icons-material/Google';
 
-import LoginForm from 'src/components/molecules/forms/auth/LoginForm';
-import SignUpForm from 'src/components/molecules/forms/auth/SignUpForm';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
@@ -29,13 +20,6 @@ const theme = createTheme({
     fontFamily: '"Comic Sans MS", cursive, sans-serif',
   },
   components: {
-    MuiDivider: {
-      styleOverrides: {
-        root: {
-          color: 'grey',
-        },
-      },
-    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -83,31 +67,30 @@ const AuthMain = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Box
         sx={{
           marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
           border: '1px solid #666',
           borderRadius: '2px',
           padding: '20px',
         }}
       >
-        <ThemeProvider theme={theme}>
-          <Outlet />
-          <Divider>또는</Divider>
-          <Stack direction="row" spacing={2}>
-            {socialLoginButtonList.map((socialLoginButton, idx) => (
-              <SocialLoginButtons
-                key={`${socialLoginButton.label}-${idx}`}
-                {...socialLoginButton}
-              />
-            ))}
-          </Stack>
-        </ThemeProvider>
+        <Outlet />
+        <Divider>또는</Divider>
+        <Stack direction="row" spacing={2}>
+          {socialLoginButtonList.map((socialLoginButton, idx) => (
+            <SocialLoginButtons
+              key={`${socialLoginButton.label}-${idx}`}
+              {...socialLoginButton}
+            />
+          ))}
+        </Stack>
+        <Typography variant="button" color={'#0054FF'}>
+          비밀번호를 잊어버리셨나요?
+        </Typography>
       </Box>
+
       <Box
         sx={{
           marginTop: 1,
@@ -122,7 +105,7 @@ const AuthMain = () => {
           {pathname === '/auth/login' ? '이메일로 가입하기' : '로그인 하기'}
         </Button>
       </Box>
-    </>
+    </ThemeProvider>
   );
 };
 

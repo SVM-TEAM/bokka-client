@@ -1,18 +1,14 @@
-import {
-  LOGIN_ERROR_TYPE,
-  LOGIN_SUCCESS_TYPE,
-  LocalLoginDto,
-  SocialLoginDto,
-} from 'src/types';
+import { AuthErrorCodeType, LocalLoginDto, SocialLoginDto } from 'src/types';
 import axiosInstanceObj from '.';
-import { DEFAULT_WEB_SITE_NAME } from 'src/constants/datas';
+import { DEFAULT_WEB_SITE_TYPE } from 'src/constants/datas';
+import { AUTH_ERROR_CODE_MAPPING } from 'src/constants/errorCodes';
 
 const socialLogin = async (dto: SocialLoginDto) => {
   try {
     switch (dto.authProvider) {
       case 'GOOGLE':
         return await axiosInstanceObj.authAxiosInstance.get(
-          `/auth/login/google?site=${DEFAULT_WEB_SITE_NAME}`,
+          `/auth/login/google?site=${DEFAULT_WEB_SITE_TYPE}`,
           { withCredentials: true }
         );
       case 'KAKAO':
@@ -23,15 +19,12 @@ const socialLogin = async (dto: SocialLoginDto) => {
   }
 };
 
-const login = async (
-  dto: LocalLoginDto
-): Promise<LOGIN_SUCCESS_TYPE | LOGIN_ERROR_TYPE> => {
-  if (dto.password === '' || dto.userId === '') return 'NULL_INPUT';
+const login = async (dto: LocalLoginDto): Promise<string> => {
   try {
     const data = {
       userId: dto.userId,
       password: dto.password,
-      siteType: DEFAULT_WEB_SITE_NAME,
+      siteType: DEFAULT_WEB_SITE_TYPE,
       loginProvider: dto.authProvider,
     };
     await axiosInstanceObj.authAxiosInstance.post('/auth/login', data, {
@@ -39,7 +32,8 @@ const login = async (
     });
     return 'SUCCESS_LOGIN';
   } catch (e: any) {
-    return e.response.data.result.error.message ?? 'INVALID_USER';
+    const errorCode: AuthErrorCodeType = e.response.data.code ?? 5000;
+    return AUTH_ERROR_CODE_MAPPING[errorCode];
   }
 };
 
@@ -51,7 +45,7 @@ const checkCookie = async () => {
         withCredentials: true,
       }
     );
-    return true;
+    return result;
   } catch (e: any) {
     if (e.response.data.code === 5002) {
       try {

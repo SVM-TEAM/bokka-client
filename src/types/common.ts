@@ -19,5 +19,4 @@ export interface LabelValueCommonInterface<ValueType> {
 }
 
 export type AuthProviderType = 'GOOGLE' | 'KAKAO' | 'NAVER';
-export type LOGIN_ERROR_TYPE = 'INVALID_USER' | 'NULL_INPUT';
-export type LOGIN_SUCCESS_TYPE = 'SUCCESS_LOGIN';
+export type AuthErrorCodeType = 3000 | 3001 | 3002 | 5000;
