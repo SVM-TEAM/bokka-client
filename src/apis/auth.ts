@@ -1,4 +1,9 @@
-import { AuthErrorCodeType, LocalLoginDto, SocialLoginDto } from 'src/types';
+import {
+  AuthErrorCodeType,
+  BaseResponse,
+  LocalLoginDto,
+  SocialLoginDto,
+} from 'src/types';
 import axiosInstanceObj from '.';
 import { DEFAULT_WEB_SITE_TYPE } from 'src/constants/datas';
 import { AUTH_ERROR_CODE_MAPPING } from 'src/constants/errorCodes';
@@ -87,12 +92,22 @@ const refresh = async () => {
   }
 };
 
+const emailAuthentication = async (
+  verifyCode: string
+): Promise<BaseResponse<boolean>> => {
+  const response = await axiosInstanceObj.authAxiosInstance.get<
+    BaseResponse<boolean>
+  >(`/auth/email/authentication?verifyCode=${verifyCode}`, {});
+  return response.data;
+};
+
 const authApi = {
   login,
   socialLogin,
   checkCookie,
   logout,
   refresh,
+  emailAuthentication,
 };
 
 export default authApi;
