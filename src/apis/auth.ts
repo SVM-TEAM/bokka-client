@@ -94,9 +94,9 @@ const refresh = async () => {
 
 const emailAuthentication = async (
   verifyCode: string
-): Promise<BaseResponse<boolean>> => {
+): Promise<BaseResponse<string>> => {
   const response = await axiosInstanceObj.authAxiosInstance.get<
-    BaseResponse<boolean>
+    BaseResponse<string>
   >(`/auth/email/authentication?verifyCode=${verifyCode}`, {});
   return response.data;
 };

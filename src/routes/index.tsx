@@ -9,13 +9,13 @@ import AuthMain from 'src/pages/auth/Main';
 const RouterConfig = () => {
   const router = createBrowserRouter([
     {
+      path: 'email-authentication/:verifyCode',
+      element: <EmailAuthentication />,
+    },
+    {
       path: '/',
       element: <MainLayout />,
       children: [
-        {
-          path: 'email-authentication/:verifyCode',
-          element: <EmailAuthentication />,
-        },
         {
           path: 'auth',
           element: <AuthMain />,
