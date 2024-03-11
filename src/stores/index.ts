@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import snackbarSlice from './notices/snackBarSlice';
+import userSlice from './users/userSlice';
 
 const rootReducer = combineReducers({
-  snackBarReduce: snackbarSlice.reducer,
+  snackBarReducer: snackbarSlice.reducer,
+  userReducer: userSlice.reducer,
 });
 
 const store = configureStore({ reducer: rootReducer });

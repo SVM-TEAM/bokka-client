@@ -1,43 +1,10 @@
 import { Button, Box, Divider, Stack, Typography } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SocialLoginButtons, {
   SocialLoginButtonProps,
 } from 'src/components/atoms/buttons/SocialLoginButton';
 import GoogleIcon from '@mui/icons-material/Google';
 
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#9575cd',
-    },
-    background: {
-      default: '#f3e5f5',
-    },
-  },
-  typography: {
-    fontFamily: '"Comic Sans MS", cursive, sans-serif',
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 20,
-          padding: '10px 20px',
-        },
-      },
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          borderRadius: 20,
-          marginBottom: '10px',
-        },
-      },
-    },
-  },
-});
 
 const AuthMain = () => {
   const { pathname } = useLocation();
@@ -67,7 +34,7 @@ const AuthMain = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Box
         sx={{
           marginTop: 8,
@@ -105,7 +72,7 @@ const AuthMain = () => {
           {pathname === '/auth/login' ? '이메일로 가입하기' : '로그인 하기'}
         </Button>
       </Box>
-    </ThemeProvider>
+    </>
   );
 };
 
