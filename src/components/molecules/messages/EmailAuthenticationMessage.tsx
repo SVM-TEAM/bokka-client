@@ -21,7 +21,7 @@ const EmailAuthenticationMessage = ({
   const message = getMessage();
   return (
     <>
-      <Typography variant="h4"> 안녕하세요. {userId} </Typography>
+      {userId && <Typography variant="h4"> 안녕하세요. {userId} </Typography>}
       <Typography variant="body1"> {message}</Typography>
     </>
   );
