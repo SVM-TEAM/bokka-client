@@ -1,4 +1,6 @@
+import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import PopUpModal from 'src/components/molecules/modals/PopUpModal';
 import useAppSelector from 'src/hooks/useAppSelector';
 
@@ -14,11 +16,14 @@ const HomeMain = () => {
   }, []);
 
   return (
-    <PopUpModal
-      open={modalOpen}
-      handleClose={handleModalClose}
-      content={message}
-    />
+    <Box>
+      <PopUpModal
+        open={modalOpen}
+        handleClose={handleModalClose}
+        content={message}
+      />
+      <Outlet />
+    </Box>
   );
 };
 

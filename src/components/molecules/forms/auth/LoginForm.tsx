@@ -17,7 +17,8 @@ const LoginForm = () => {
       password: password,
       authProvider: 'LOCAL',
     });
-    if (result === 'SUCCESS_LOGIN') return navigate('/', { replace: true });
+    if (result === 'SUCCESS_LOGIN')
+      return navigate('/home/news', { replace: true });
     setError(true);
     setErrorHelperText(result);
   };
