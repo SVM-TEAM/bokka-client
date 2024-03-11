@@ -6,7 +6,7 @@ import { closeSnackBar } from 'src/stores/notices/snackBarSlice';
 
 const CommonSnackBar = () => {
   const dispatch = useAppDispatch();
-  const { open, message } = useAppSelector((state) => state.snackBarReduce);
+  const { open, message } = useAppSelector((state) => state.snackBarReducer);
 
   const handleClose = () => {
     dispatch(closeSnackBar());

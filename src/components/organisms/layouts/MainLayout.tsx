@@ -1,14 +1,18 @@
-import { Container, CssBaseline } from '@mui/material';
-import { Outlet } from 'react-router-dom';
-import CommonSnackBar from 'src/components/atoms/snack-bars/CommonSnackBar';
+import { ThemeProvider } from '@mui/material';
+import MainFooter from 'src/components/molecules/footers/MainFooter';
+import CommonContentForm from 'src/components/molecules/forms/CommonContentForm';
+import MainHeader from 'src/components/molecules/headers/MainHeader';
+import { mainTheme } from 'src/styles/themes/mainTheme';
 
 const MainLayout = () => {
   return (
-    <Container component="main" maxWidth="sm">
-      <CssBaseline />
-      <CommonSnackBar />
-      <Outlet />
-    </Container>
+    <ThemeProvider theme={mainTheme}>
+      <div className="wrapper">
+        <MainHeader />
+        <CommonContentForm />
+        <MainFooter />
+      </div>
+    </ThemeProvider>
   );
 };
 
