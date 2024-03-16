@@ -6,8 +6,8 @@ import useAppSelector from 'src/hooks/useAppSelector';
 
 const HomeMain = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(true);
-  const userId = useAppSelector((state) => state.userReducer.userId);
-  const message = `안녕하세요. ${userId} 님.`;
+  const userName = useAppSelector((state) => state.userReducer.userName);
+  const message = `안녕하세요. ${userName} 님.`;
 
   const handleModalClose = () => setModalOpen(false);
   useEffect(() => {
