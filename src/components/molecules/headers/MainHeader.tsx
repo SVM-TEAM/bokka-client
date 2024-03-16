@@ -9,7 +9,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import useAppSelector from 'src/hooks/useAppSelector';
 
 const MainHeader = () => {
-  const userId = useAppSelector((state) => state.userReducer.userId);
+  const userName = useAppSelector((state) => state.userReducer.userName);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="primary">
@@ -24,7 +24,7 @@ const MainHeader = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            {userId}
+            {userName}
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />

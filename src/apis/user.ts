@@ -32,9 +32,19 @@ const signUpUser = async (dto: {
   return response.data;
 };
 
+const getUser = async (): Promise<string> => {
+  const response = await axiosInstanceObj.serviceAxiosInstance.get<{
+    name: string;
+  }>('/user/name', {
+    withCredentials: true,
+  });
+  return response.data.name;
+};
+
 const userApi = {
   checkDuplicationUserId,
   signUpUser,
+  getUser,
 };
 
 export default userApi;
