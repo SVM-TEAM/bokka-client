@@ -10,10 +10,13 @@ import { mainTheme } from 'src/styles/themes/mainTheme';
 
 const MainLayout = () => {
   const dispatch = useAppDispatch();
-  const { data } = useQuery('homeNews', () => userApi.getUser(), {});
 
-  console.log(data);
-  dispatch(setUserName(data ?? ''));
+  useQuery('homeNews', () => setUseNameForOnMoutned);
+
+  const setUseNameForOnMoutned = async () => {
+    const userName = await userApi.getUser();
+    dispatch(setUserName(userName));
+  };
 
   return (
     <ThemeProvider theme={mainTheme}>
