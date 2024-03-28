@@ -39,16 +39,16 @@ const RouterConfig = () => {
             },
           ],
         },
-        {
-          path: 'email-authentication/:verifyCode',
-          element: <EmailAuthentication />,
-        },
       ],
     },
     {
       path: 'auth',
       element: <NoHeaderLayout />,
       children: [
+        {
+          path: 'email-authentication/:verifyCode',
+          element: <EmailAuthentication />,
+        },
         {
           element: <AuthMain />,
           children: [

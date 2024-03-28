@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const EmailAuthenticationMessage = ({
   code,
@@ -7,6 +8,8 @@ const EmailAuthenticationMessage = ({
   code: number;
   userId: string;
 }) => {
+  const navigate = useNavigate();
+
   const getMessage = () => {
     switch (code) {
       case 1000:
@@ -19,10 +22,23 @@ const EmailAuthenticationMessage = ({
   };
 
   const message = getMessage();
+
+  const goLogin = () => {
+    return navigate('/auth/login', { replace: true });
+  };
   return (
     <>
       {userId && <Typography variant="h4"> 안녕하세요. {userId} </Typography>}
       <Typography variant="body1"> {message}</Typography>
+      <Button
+        fullWidth
+        variant="contained"
+        color="primary"
+        sx={{ mt: 3, mb: 2 }}
+        onClick={goLogin}
+      >
+        로그인 하러 가기
+      </Button>
     </>
   );
 };
