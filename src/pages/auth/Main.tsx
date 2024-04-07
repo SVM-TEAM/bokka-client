@@ -5,6 +5,7 @@ import SocialLoginButtons, {
 import GoogleIcon from '@mui/icons-material/Google';
 
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import EachElement from 'src/components/organisms/utils/EachElement';
 
 const AuthMain = () => {
   const { pathname } = useLocation();
@@ -46,12 +47,12 @@ const AuthMain = () => {
         <Outlet />
         <Divider>또는</Divider>
         <Stack direction="row" spacing={2}>
-          {socialLoginButtonList.map((socialLoginButton, idx) => (
-            <SocialLoginButtons
-              key={`${socialLoginButton.label}-${idx}`}
-              {...socialLoginButton}
-            />
-          ))}
+          <EachElement
+            of={socialLoginButtonList}
+            render={(item, idx) => (
+              <SocialLoginButtons key={`${item.label}-${idx}`} {...item} />
+            )}
+          />
         </Stack>
         <Typography variant="button" color={'#0054FF'}>
           비밀번호를 잊어버리셨나요?
