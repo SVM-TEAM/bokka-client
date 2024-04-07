@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainFooterObjectType } from 'src/types';
 import { MAIN_FOOTER_ICONS } from 'src/constants/datas';
+import EachElement from 'src/components/organisms/utils/EachElement';
 
 const MainFooter = () => {
   const navigate = useNavigate();
@@ -38,16 +39,17 @@ const MainFooter = () => {
 
   return (
     <BottomNavigation value={value} onChange={handleChange}>
-      {Object.values(MAIN_FOOTER_ICONS).map((obj) => {
-        return (
+      <EachElement
+        of={Object.values(MAIN_FOOTER_ICONS)}
+        render={(item) => (
           <BottomNavigationAction
-            key={obj.value}
-            label={obj.label}
-            value={obj}
-            icon={getIcon(obj.value)}
+            key={item.value}
+            label={item.label}
+            value={item}
+            icon={getIcon(item.value)}
           />
-        );
-      })}
+        )}
+      />
     </BottomNavigation>
   );
 };
