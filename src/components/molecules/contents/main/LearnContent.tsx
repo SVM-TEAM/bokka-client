@@ -7,11 +7,11 @@ import {
   CardHeader,
   CardMedia,
   Divider,
-  Tooltip,
   Typography,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-import Zoom from '@mui/material/Zoom';
+import LinearBar from '../../progress-bars/LinearBar';
+import CommonTooltip from 'src/components/atoms/tooltips/CommonTooltip';
 
 const LearnContent = () => {
   return (
@@ -24,7 +24,13 @@ const LearnContent = () => {
         borderRadius: '15px',
       }}
     >
-      <CardHeader />
+      <CardHeader
+        title={
+          <Box sx={{ width: '100%' }}>
+            <LinearBar progress={50} />
+          </Box>
+        }
+      />
       <Divider variant="middle" />
       <CardMedia
         component="img"
@@ -47,7 +53,7 @@ const LearnContent = () => {
           }}
         >
           <Typography variant="body1">레벨 : 1</Typography>
-          <Tooltip TransitionComponent={Zoom} disableFocusListener title="Add">
+          <CommonTooltip title="오늘의 출석">
             <Avatar
               sx={{
                 background: 'linear-gradient(45deg, #FFC0CB, #FFD700, #FFA500)',
@@ -55,7 +61,7 @@ const LearnContent = () => {
             >
               <StarIcon />
             </Avatar>
-          </Tooltip>
+          </CommonTooltip>
         </Box>
       </CardContent>
       <Box
