@@ -39,17 +39,14 @@ const MainFooter = () => {
 
   return (
     <BottomNavigation value={value} onChange={handleChange}>
-      <EachElement
-        of={Object.values(MAIN_FOOTER_ICONS)}
-        render={(item) => (
-          <BottomNavigationAction
-            key={item.value}
-            label={item.label}
-            value={item}
-            icon={getIcon(item.value)}
-          />
-        )}
-      />
+      {Object.values(MAIN_FOOTER_ICONS).map((item) => (
+        <BottomNavigationAction
+          key={item.value}
+          label={item.label}
+          value={item}
+          icon={getIcon(item.value)}
+        />
+      ))}
     </BottomNavigation>
   );
 };

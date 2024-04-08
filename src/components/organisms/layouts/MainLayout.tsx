@@ -14,7 +14,8 @@ const MainLayout = () => {
   useQuery('homeNews', () => setUseNameForOnMoutned);
 
   const setUseNameForOnMoutned = async () => {
-    const userName = await userApi.getUser();
+    // const userName = await userApi.getUser();
+    const userName = 'hello';
     dispatch(setUserName(userName));
   };
 
