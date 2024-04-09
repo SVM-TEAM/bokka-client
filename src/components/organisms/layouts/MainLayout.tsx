@@ -22,9 +22,15 @@ const MainLayout = () => {
   return (
     <ThemeProvider theme={mainTheme}>
       <div className="wrapper">
-        <MainHeader />
-        <CommonContentForm />
-        <MainFooter />
+        <div className="header">
+          <MainHeader />
+        </div>
+        <div className="content">
+          <CommonContentForm />
+        </div>
+        <div className="footer">
+          <MainFooter />
+        </div>
       </div>
     </ThemeProvider>
   );

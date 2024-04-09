@@ -1,8 +1,7 @@
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
-import { Tooltip, Zoom, styled } from '@mui/material';
+import { styled } from '@mui/material';
 import CommonTooltip from 'src/components/atoms/tooltips/CommonTooltip';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -13,7 +12,6 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
   },
 }));
 
