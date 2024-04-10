@@ -1,9 +1,5 @@
-import { Fragment, useEffect } from 'react';
-import { useQuery } from 'react-query';
-import homeApi from 'src/apis/home';
-
 const NewsContent = () => {
-  return <></>;
+  return <>뉴스 컨텐츠</>;
 };
 
 export default NewsContent;

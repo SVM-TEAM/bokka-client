@@ -25,8 +25,6 @@ const LearnContent = () => {
           borderRadius: '15px',
         }}
       >
-        <CardHeader title={<LinearBar progress={50} />} />
-        <Divider variant="middle" />
         <CardMedia
           component="img"
           image="https://i1.sndcdn.com/avatars-g8wTS6RFcvm07Ein-Gru6Lg-t240x240.jpg"
@@ -88,38 +86,17 @@ const LearnContent = () => {
           backgroundColor: '#EAEAEA',
           borderRadius: '15px',
           display: 'flex',
-          flexDirection: 'column', // 이를 통해 CardContent가 flex-grow를 사용하여 남은 공간을 채울 수 있음
+          flexDirection: 'column',
         }}
       >
-        <CardHeader title="오늘의 학습률" />
+        <CardHeader title={<LinearBar progress={50} />} />
         <Divider variant="middle" />
         <CardContent
           sx={{
-            overflowY: 'auto', // 내용이 세로로 넘칠 경우 스크롤바 생성
-            flexGrow: 1, // CardContent가 카드 내에서 가능한 많은 공간을 차지하도록 함
+            overflowY: 'auto',
+            flexGrow: 1,
           }}
-        >
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} /> <LinearBar progress={50} />
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} /> <LinearBar progress={50} />
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} /> <LinearBar progress={50} />
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} />
-          <LinearBar progress={50} /> <LinearBar progress={50} />{' '}
-          <LinearBar progress={50} /> <LinearBar progress={50} />
-        </CardContent>
+        ></CardContent>
       </Card>
     </>
   );
